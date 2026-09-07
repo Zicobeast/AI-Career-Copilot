@@ -54,16 +54,21 @@ def extract_text_from_docx(file_bytes: bytes) -> str:
 
 def extract_candidate_name(text: str) -> str:
     """Extract candidate name from first non-empty lines."""
-    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    # Strip potential UTF-8 BOM or non-printable characters
+    cleaned_text = text.lstrip("\ufeff\ufffe\xef\xbb\xbf").strip()
+    lines = [line.strip() for line in cleaned_text.splitlines() if line.strip()]
     if not lines:
         return "Unknown Candidate"
 
-    first_line = lines[0]
+    first_line = lines[0].lstrip("\ufeff\ufffe")
     # Remove common headers or phone/email if combined
     if "@" in first_line or "resume" in first_line.lower():
         if len(lines) > 1:
-            return lines[1][:50]
-    return first_line[:50]
+            first_line = lines[1].lstrip("\ufeff\ufffe")
+            
+    return first_line[:50].strip()
+
+
 
 
 def extract_contact_info(text: str) -> Tuple[str, str, List[str]]:
