@@ -67,6 +67,18 @@ export const getSkillCatalog = async () => {
   return response.data;
 };
 
+// Job endpoints
+export const analyzeJob = async ({ job_title, company, description }) => {
+  const response = await api.post('/api/job/analyze', { job_title, company, description });
+  return response.data;
+};
+
+export const getDemoJob = async () => {
+  const response = await api.post('/api/job/demo');
+  return response.data;
+};
+
 export default api;
+
 
 
