@@ -3,11 +3,17 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
+from app.database import engine, Base
+import app.models  # Ensure models are registered with Base metadata
 from app.routes.resume import router as resume_router
 from app.routes.skills import router as skills_router
 from app.routes.job import router as job_router
 from app.routes.analysis import router as analysis_router
 from app.routes.roadmap import router as roadmap_router
+
+# Initialize SQLite tables on application startup
+Base.metadata.create_all(bind=engine)
+
 
 
 
