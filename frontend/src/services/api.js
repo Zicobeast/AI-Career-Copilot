@@ -78,7 +78,23 @@ export const getDemoJob = async () => {
   return response.data;
 };
 
+// Skill Gap Analysis endpoints
+export const calculateSkillGap = async ({ resume_skills, job_skills, job_title }) => {
+  const response = await api.post('/api/analysis/skill-gap', {
+    resume_skills,
+    job_skills,
+    job_title,
+  });
+  return response.data;
+};
+
+export const getDemoSkillGap = async () => {
+  const response = await api.get('/api/analysis/demo');
+  return response.data;
+};
+
 export default api;
+
 
 
 

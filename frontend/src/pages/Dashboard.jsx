@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
   FileText, 
@@ -8,7 +8,8 @@ import {
   Milestone, 
   Bot, 
   Sparkles,
-  ChevronRight
+  ChevronRight,
+  RefreshCw
 } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import ScoreCard from '../components/ScoreCard';
@@ -16,14 +17,50 @@ import SkillCard from '../components/SkillCard';
 import RoadmapItem from '../components/RoadmapItem';
 import ProgressBar from '../components/ProgressBar';
 import { useDemo } from '../context/DemoContext';
+import { calculateSkillGap } from '../services/api';
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { activeData, isDemoActive, toggleRoadmapItem } = useDemo();
+  const { activeData, setActiveData, isDemoActive, toggleRoadmapItem } = useDemo();
+  const [calculating, setCalculating] = useState(false);
+
+  useEffect(() => {
+    const fetchRealGap = async () => {
+      setCalculating(true);
+      try {
+        const resumeSkills = activeData.skills?.allDetected || ['Python', 'SQL', 'Git', 'React', 'REST APIs'];
+        const jobSkills = ['Python', 'FastAPI', 'REST APIs', 'SQL', 'PostgreSQL', 'Git', 'Docker', 'AWS'];
+        const result = await calculateSkillGap({
+          resume_skills: resumeSkills,
+          job_skills: jobSkills,
+          job_title: activeData.targetJobTitle || 'Junior Backend Developer'
+        });
+
+        setActiveData(prev => ({
+          ...prev,
+          readinessScore: result.career_readiness_score,
+          scoreStatus: result.score_explanation,
+          skills: {
+            ...prev.skills,
+            matched: result.matched_skills,
+            partial: result.partial_skills,
+            missing: result.missing_skills
+          }
+        }));
+      } catch (err) {
+        console.warn('Using existing dashboard state, backend error:', err);
+      } finally {
+        setCalculating(false);
+      }
+    };
+
+    fetchRealGap();
+  }, []);
 
   const completedCount = activeData.roadmap.filter(i => i.completed).length;
   const totalRoadmapItems = activeData.roadmap.length;
   const nextSkill = activeData.roadmap.find(i => !i.completed);
+
 
   return (
     <div className="min-h-screen bg-slate-50 flex">
