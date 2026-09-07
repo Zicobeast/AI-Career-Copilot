@@ -93,7 +93,28 @@ export const getDemoSkillGap = async () => {
   return response.data;
 };
 
+// Roadmap endpoints
+export const generateRoadmap = async ({ missing_skills, job_title, target_company }) => {
+  const response = await api.post('/api/roadmap/generate', {
+    missing_skills,
+    job_title,
+    target_company,
+  });
+  return response.data;
+};
+
+export const updateRoadmapItemProgress = async (item_id, completed) => {
+  const response = await api.patch(`/api/roadmap/${item_id}/progress`, { completed });
+  return response.data;
+};
+
+export const getDemoRoadmap = async () => {
+  const response = await api.get('/api/roadmap/demo');
+  return response.data;
+};
+
 export default api;
+
 
 
 
