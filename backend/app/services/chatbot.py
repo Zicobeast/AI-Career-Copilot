@@ -24,8 +24,9 @@ def generate_rule_based_reply(message: str, context: Optional[ChatContext]) -> T
 
     matched_str = ", ".join(matched) if matched else "your current technical stack"
     missing_str = ", ".join(missing) if missing else "upcoming domain skills"
-    primary_missing = missing[0] if missing else "FastAPI"
-    secondary_missing = missing[1] if len(missing) > 1 else "Docker"
+    primary_missing = next_skill if next_skill else (missing[0] if missing else "FastAPI")
+    secondary_missing = [s for s in missing if s != primary_missing][0] if len([s for s in missing if s != primary_missing]) > 0 else "Docker"
+
 
     if any(k in msg_lower for k in ["learn first", "priority", "start with", "next step", "what should i learn"]):
         reply = (

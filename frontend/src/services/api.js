@@ -123,7 +123,13 @@ export const sendChatMessage = async ({ message, history, context }) => {
   return response.data;
 };
 
+export const getDemoChat = async () => {
+  const response = await api.get('/api/chat/demo');
+  return response.data;
+};
+
 export default api;
+
 
 
 

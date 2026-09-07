@@ -63,6 +63,15 @@ class TestChatbotEndpoints(unittest.TestCase):
         self.assertIn("Docker", data["reply"])
         self.assertTrue("Environment Parity" in data["reply"] or "container" in data["reply"].lower())
 
+    def test_chat_demo_endpoint(self):
+        response = self.client.get("/api/chat/demo")
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertIn("reply", data)
+        self.assertIn("suggested_followups", data)
+        self.assertGreater(len(data["suggested_followups"]), 0)
+
 if __name__ == "__main__":
     unittest.main()
+
 

@@ -11,7 +11,8 @@ import {
 import { useDemo } from '../context/DemoContext';
 
 export default function Sidebar() {
-  const { isDemoActive, activeData } = useDemo();
+  const { isDemoActive, activeData, startDemo } = useDemo();
+
 
   const navItems = [
     { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -40,7 +41,7 @@ export default function Sidebar() {
         </Link>
       </div>
 
-      {/* Mode Badge */}
+      {/* Mode Badge & Quick Reset */}
       <div className="px-4 py-3 bg-slate-50 border-b border-slate-100 flex items-center justify-between text-xs">
         <div className="flex items-center space-x-2">
           <span className={`w-2 h-2 rounded-full ${isDemoActive ? 'bg-amber-500' : 'bg-emerald-500'}`}></span>
@@ -48,10 +49,15 @@ export default function Sidebar() {
             {isDemoActive ? 'Demo Mode Active' : 'Workspace Mode'}
           </span>
         </div>
-        <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-white border border-slate-200 text-slate-600">
-          {isDemoActive ? 'Preloaded' : 'Standard'}
-        </span>
+        <button
+          onClick={startDemo}
+          title="Reload evaluation demo candidate"
+          className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-white hover:bg-blue-50 hover:text-blue-700 border border-slate-200 text-slate-600 cursor-pointer transition-colors"
+        >
+          {isDemoActive ? 'Reset Demo' : 'Load Demo'}
+        </button>
       </div>
+
 
       {/* Navigation Links */}
       <div className="p-3 flex-1 space-y-1">
