@@ -113,7 +113,18 @@ export const getDemoRoadmap = async () => {
   return response.data;
 };
 
+// Chatbot Assistant endpoint
+export const sendChatMessage = async ({ message, history, context }) => {
+  const response = await api.post('/api/chat', {
+    message,
+    history: history || [],
+    context: context || null,
+  });
+  return response.data;
+};
+
 export default api;
+
 
 
 
