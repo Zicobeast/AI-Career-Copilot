@@ -56,5 +56,17 @@ export const getDemoResume = async () => {
   return response.data;
 };
 
+// Skill extraction & catalog endpoints
+export const extractSkills = async (text) => {
+  const response = await api.post('/api/skills/extract', { text });
+  return response.data;
+};
+
+export const getSkillCatalog = async () => {
+  const response = await api.get('/api/skills/catalog');
+  return response.data;
+};
+
 export default api;
+
 

@@ -254,21 +254,22 @@ export default function Resume() {
               <div className="p-6 sm:p-8 space-y-8">
                 {/* Detected Skills Section */}
                 <div>
-                  <div className="flex items-center justify-between mb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                     <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
                       <Code className="w-4 h-4 text-blue-600" />
                       Extracted Technical Skills ({parsedResult.skills?.length || 0})
                     </h3>
-                    <span className="text-xs text-slate-500">Parsed via keyword matching engine</span>
+                    <span className="text-xs text-slate-500 font-medium">Standardized via Technical Taxonomy Engine</span>
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-3">
                     {parsedResult.skills && parsedResult.skills.length > 0 ? (
                       parsedResult.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="px-3 py-1.5 rounded-xl bg-blue-50 text-blue-800 text-xs font-semibold border border-blue-200/80 shadow-2xs hover:bg-blue-100 transition-colors"
+                          className="px-3 py-1.5 rounded-xl bg-blue-50 text-blue-800 text-xs font-semibold border border-blue-200/80 shadow-2xs hover:bg-blue-100 transition-colors flex items-center gap-1.5"
                         >
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                           {skill}
                         </span>
                       ))
@@ -277,6 +278,7 @@ export default function Resume() {
                     )}
                   </div>
                 </div>
+
 
                 {/* Grid for Education, Experience & Projects */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-slate-100">
