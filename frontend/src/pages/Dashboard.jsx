@@ -70,26 +70,33 @@ export default function Dashboard() {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top Header */}
-        <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-40">
+        <header className="h-16 bg-white border-b border-slate-200 px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
           <div>
-            <h1 className="text-lg font-bold text-slate-900 leading-tight">Candidate Dashboard</h1>
-            <p className="text-xs text-slate-500">Personalized career readiness and skill benchmark overview</p>
+            <h1 className="text-base sm:text-lg font-bold text-slate-900 leading-tight">Candidate Dashboard</h1>
+            <p className="text-[11px] sm:text-xs text-slate-500">Personalized career readiness and skill benchmark overview</p>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            {calculating && (
+              <span className="hidden sm:inline-flex items-center gap-1 text-[11px] text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">
+                <RefreshCw className="w-3 h-3 animate-spin" />
+                Synchronizing
+              </span>
+            )}
             {isDemoActive ? (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold">
+              <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-[11px] sm:text-xs font-semibold">
                 <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-                Demo Candidate: {activeData.candidateName}
+                <span className="hidden sm:inline">Demo Candidate:</span> {activeData.candidateName}
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold">
+              <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] sm:text-xs font-semibold">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                Active Session
+                <span>Active Session</span>
               </span>
             )}
           </div>
         </header>
+
 
         {/* Dashboard Body */}
         <main className="flex-1 p-6 sm:p-8 max-w-7xl w-full mx-auto space-y-8">

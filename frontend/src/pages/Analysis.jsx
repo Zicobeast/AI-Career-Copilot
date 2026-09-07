@@ -119,28 +119,35 @@ export default function Analysis() {
 
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top Header */}
-        <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-40">
+        <header className="h-16 bg-white border-b border-slate-200 px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
           <div>
-            <h1 className="text-lg font-bold text-slate-900 leading-tight">Job Description & Skill Analysis</h1>
-            <p className="text-xs text-slate-500">Benchmark your technical profile against target career roles</p>
+            <h1 className="text-base sm:text-lg font-bold text-slate-900 leading-tight">Job Description & Skill Analysis</h1>
+            <p className="text-[11px] sm:text-xs text-slate-500">Benchmark your technical profile against target career roles</p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={handleLoadDemoJob}
               disabled={loading}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all cursor-pointer disabled:opacity-50"
             >
-              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-              <span>Use Demo Job</span>
+              {loading ? (
+                <RefreshCw className="w-3.5 h-3.5 animate-spin text-blue-600" />
+              ) : (
+                <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+              )}
+              <span className="hidden sm:inline">Use Demo Job</span>
+              <span className="sm:hidden">Demo</span>
             </button>
             <Link
               to="/dashboard"
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 transition-all"
+              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 transition-all"
             >
-              <span>Back to Dashboard</span>
+              <span className="hidden sm:inline">Back to Dashboard</span>
+              <span className="sm:hidden">Dashboard</span>
             </Link>
           </div>
         </header>
+
 
         <main className="flex-1 p-6 sm:p-8 max-w-7xl w-full mx-auto space-y-8">
           {/* Error Banner */}

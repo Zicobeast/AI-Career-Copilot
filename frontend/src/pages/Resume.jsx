@@ -134,29 +134,35 @@ export default function Resume() {
 
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top Header */}
-        <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-40">
+        <header className="h-16 bg-white border-b border-slate-200 px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
           <div>
-            <h1 className="text-lg font-bold text-slate-900 leading-tight">Resume Management</h1>
-            <p className="text-xs text-slate-500">Upload PDF or DOCX documents for automated structure & skill extraction</p>
+            <h1 className="text-base sm:text-lg font-bold text-slate-900 leading-tight">Resume Management</h1>
+            <p className="text-[11px] sm:text-xs text-slate-500">Upload PDF or DOCX documents for automated structure & skill extraction</p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={handleLoadDemo}
               disabled={uploading}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-              <span>Use Demo Resume</span>
+              {uploading ? (
+                <RefreshCw className="w-3.5 h-3.5 animate-spin text-blue-600" />
+              ) : (
+                <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+              )}
+              <span className="hidden sm:inline">Use Demo Resume</span>
+              <span className="sm:hidden">Demo</span>
             </button>
             <Link
               to="/analysis"
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-all"
+              className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 rounded-lg text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-all"
             >
               <span>Analyze Job</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </header>
+
 
         <main className="flex-1 p-6 sm:p-8 max-w-6xl w-full mx-auto space-y-8">
           {/* Error Banner */}

@@ -128,75 +128,91 @@ export default function Roadmap() {
 
           {/* Sequential Milestones List */}
           <div className="space-y-4">
-            {filteredItems.map((item) => (
-              <div
-                key={item.id}
-                className={`p-5 rounded-2xl border transition-all ${
-                  item.completed
-                    ? 'bg-emerald-50/40 border-emerald-200 shadow-2xs'
-                    : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
-                }`}
-              >
-                <div className="flex items-start gap-4">
-                  {/* Interactive Checkbox */}
-                  <button
-                    onClick={() => handleToggle(item.id)}
-                    className="mt-1 focus:outline-none shrink-0"
-                    title={item.completed ? "Mark incomplete" : "Mark milestone complete"}
-                  >
-                    {item.completed ? (
-                      <CheckCircle2 className="w-6 h-6 text-emerald-600 transition-transform active:scale-90" />
-                    ) : (
-                      <Circle className="w-6 h-6 text-slate-400 hover:text-blue-600 transition-colors" />
-                    )}
-                  </button>
+            {filteredItems.length > 0 ? (
+              filteredItems.map((item) => (
 
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2.5 mb-1.5">
-                      <span className="text-xs font-mono font-black text-slate-400 px-1.5 py-0.5 rounded bg-slate-100">
-                        {item.number}
-                      </span>
-                      <h3 className={`text-base font-bold ${item.completed ? 'line-through text-slate-500' : 'text-slate-900'}`}>
-                        {item.skill}
-                      </h3>
-                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
-                        item.difficulty === 'Beginner' ? 'bg-blue-100 text-blue-800' :
-                        item.difficulty === 'Intermediate' ? 'bg-amber-100 text-amber-800' :
-                        'bg-purple-100 text-purple-800'
-                      }`}>
-                        {item.difficulty}
-                      </span>
-                      {item.completed && (
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
-                          Completed
-                        </span>
+                <div
+                  key={item.id}
+                  className={`p-5 rounded-2xl border transition-all ${
+                    item.completed
+                      ? 'bg-emerald-50/40 border-emerald-200 shadow-2xs'
+                      : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
+                  }`}
+                >
+                  <div className="flex items-start gap-4">
+                    {/* Interactive Checkbox */}
+                    <button
+                      onClick={() => handleToggle(item.id)}
+                      className="mt-1 focus:outline-none shrink-0"
+                      title={item.completed ? "Mark incomplete" : "Mark milestone complete"}
+                    >
+                      {item.completed ? (
+                        <CheckCircle2 className="w-6 h-6 text-emerald-600 transition-transform active:scale-90" />
+                      ) : (
+                        <Circle className="w-6 h-6 text-slate-400 hover:text-blue-600 transition-colors" />
                       )}
-                    </div>
+                    </button>
 
-                    <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                      {item.description}
-                    </p>
-
-                    <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 pt-3 border-t border-slate-100/80">
-                      <span className="flex items-center gap-1.5 font-medium">
-                        <Clock className="w-3.5 h-3.5 text-slate-400" />
-                        Est. Duration: <strong className="text-slate-700">{item.timeEstimate || item.time_estimate || '1.5 Weeks'}</strong>
-                      </span>
-                      <span className="flex items-center gap-1.5 font-medium">
-                        <Flame className="w-3.5 h-3.5 text-amber-500" />
-                        High Priority Qualification
-                      </span>
-                      {item.prerequisites && item.prerequisites.length > 0 && (
-                        <span className="text-[11px] text-slate-400">
-                          Prerequisites: {item.prerequisites.join(', ')}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2.5 mb-1.5">
+                        <span className="text-xs font-mono font-black text-slate-400 px-1.5 py-0.5 rounded bg-slate-100">
+                          {item.number}
                         </span>
-                      )}
+                        <h3 className={`text-base font-bold ${item.completed ? 'line-through text-slate-500' : 'text-slate-900'}`}>
+                          {item.skill}
+                        </h3>
+                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
+                          item.difficulty === 'Beginner' ? 'bg-blue-100 text-blue-800' :
+                          item.difficulty === 'Intermediate' ? 'bg-amber-100 text-amber-800' :
+                          'bg-purple-100 text-purple-800'
+                        }`}>
+                          {item.difficulty}
+                        </span>
+                        {item.completed && (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                            Completed
+                          </span>
+                        )}
+                      </div>
+
+                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                        {item.description}
+                      </p>
+
+                      <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 pt-3 border-t border-slate-100/80">
+                        <span className="flex items-center gap-1.5 font-medium">
+                          <Clock className="w-3.5 h-3.5 text-slate-400" />
+                          Est. Duration: <strong className="text-slate-700">{item.timeEstimate || item.time_estimate || '1.5 Weeks'}</strong>
+                        </span>
+                        <span className="flex items-center gap-1.5 font-medium">
+                          <Flame className="w-3.5 h-3.5 text-amber-500" />
+                          High Priority Qualification
+                        </span>
+                        {item.prerequisites && item.prerequisites.length > 0 && (
+                          <span className="text-[11px] text-slate-400">
+                            Prerequisites: {item.prerequisites.join(', ')}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
+              ))
+            ) : (
+              <div className="p-12 text-center bg-white rounded-2xl border border-slate-200 shadow-xs">
+                <Milestone className="w-10 h-10 text-slate-300 mx-auto mb-3" />
+                <h4 className="text-base font-bold text-slate-800 mb-1">No milestones found</h4>
+                <p className="text-xs text-slate-500 mb-4">There are no items matching your current filter criteria.</p>
+                <button
+                  onClick={() => setFilter('all')}
+                  className="text-xs font-bold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1"
+                >
+                  Reset filter to All
+                </button>
               </div>
-            ))}
+            )}
           </div>
+
 
           {/* Bottom Action */}
           <div className="p-6 bg-gradient-to-r from-slate-900 to-blue-950 rounded-2xl text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-md">
