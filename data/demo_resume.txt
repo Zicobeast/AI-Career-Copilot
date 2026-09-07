@@ -1,0 +1,36 @@
+﻿ALEX JOHNSON
+Email: alex.johnson@example.com | Phone: +1 (555) 234-5678 | GitHub: github.com/alexjohnson | LinkedIn: linkedin.com/in/alexjohnson
+
+PROFESSIONAL SUMMARY
+Aspiring Software Engineer with a solid foundation in computer science principles, full-stack web development, and backend systems. Experienced in building responsive web applications and RESTful APIs using Python, React, and SQL databases. Quick learner eager to contribute to high-impact backend engineering teams.
+
+EDUCATION
+State University of Technology
+Bachelor of Technology in Computer Science and Engineering (2021 - 2025)
+CGPA: 8.7/10.0
+Relevant Coursework: Data Structures & Algorithms, Database Management Systems, Object-Oriented Programming, Operating Systems, Computer Networks.
+
+TECHNICAL SKILLS
+- Programming Languages: Python, C++, SQL, JavaScript (ES6+), HTML5, CSS3
+- Frameworks & Libraries: React, Node.js, Express, Tailwind CSS
+- Databases & Tools: SQLite, MySQL, Git, GitHub, REST APIs, Postman, Linux CLI
+
+PROJECTS
+Student Management System | Python, SQLite, HTML/CSS
+- Developed a comprehensive desktop/web records portal handling student enrollment, course registrations, and automated grading reports.
+- Implemented robust relational schema migrations and optimized SQL queries reducing data fetch latency by 35%.
+- Integrated user role permissions for faculty and students.
+
+React Developer Portfolio | React, Tailwind CSS, Vite
+- Designed and deployed a responsive personal portfolio showcasing technical achievements, open-source projects, and dynamic contact forms.
+- Implemented dark mode toggling and interactive project filtering components.
+
+WORK EXPERIENCE
+TechNova Solutions — Software Engineering Intern (June 2024 - August 2024)
+- Collaborated with senior engineers to design and test internal REST APIs serving 10,000+ daily requests.
+- Maintained database consistency using SQL transactions and wrote comprehensive unit tests.
+- Participated in Agile sprint planning, code reviews, and Git version control workflows.
+
+CERTIFICATIONS
+- Python for Everybody Specialization — Coursera
+- Meta Front-End Developer Certificate

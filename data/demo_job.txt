@@ -1,0 +1,25 @@
+﻿Job Title: Junior Backend Developer
+Company: CloudScale Systems
+Location: Remote / Hybrid
+Employment Type: Full-time
+
+ABOUT THE ROLE
+CloudScale Systems is looking for an enthusiastic and detail-oriented Junior Backend Developer to join our core infrastructure and API development team. In this role, you will help design, build, and optimize scalable RESTful microservices and data pipelines powering modern web applications.
+
+KEY RESPONSIBILITIES
+- Build high-performance, maintainable REST APIs using Python and FastAPI.
+- Design, optimize, and manage relational database schemas using SQL and PostgreSQL.
+- Containerize backend microservices using Docker for consistent local development and cloud deployments.
+- Deploy and monitor application services on AWS cloud infrastructure.
+- Write unit tests, integration tests, and API documentation with Postman / OpenAPI.
+- Collaborate closely with frontend teams and maintain clean version control with Git and GitHub.
+
+REQUIRED TECHNICAL SKILLS & QUALIFICATIONS
+- Strong proficiency in Python and modern backend frameworks (FastAPI or Flask).
+- Solid grasp of REST APIs design principles and HTTP protocol.
+- Strong knowledge of SQL and relational database management (PostgreSQL).
+- Proficiency with Git version control, branching, and pull requests.
+- Experience with Docker and containerization concepts.
+- Familiarity with cloud services like AWS (EC2, S3, RDS).
+- Bachelor’s degree in Computer Science, Software Engineering, or equivalent practical experience.
+- Strong problem-solving aptitude and passion for clean, readable code.
